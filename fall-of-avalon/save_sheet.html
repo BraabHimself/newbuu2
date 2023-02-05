@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tainted Grail: The Fall of Avalalon Save Sheet</title>
+        <link rel="stylesheet" type="text/css" href="./resources/style/style.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="./resources/style/modal-style.css" media="screen"/>
+        <script type="text/javascript" src="./resources/js/page-functions.js"></script>
+        <script type="text/javascript" src="./resources/js/status-functions.js"></script>
+        <script type="text/javascript" src="./resources/js/note-functions.js"></script>
+        <script type="text/javascript" src="./resources/js/character-functions.js"></script>
+        <script type="text/javascript" src="./resources/js/location-functions.js"></script>
+        <script type="text/javascript" src="./resources/js/load-save-functions.js"></script>
+    </head>
+    <body>
+        <dialog id="niahm-modal">
+            <form method="dialog">
+                <div class="modal__container">
+                    <header class="modal__header" title="I didn't get a tray for Niahm! &#128561;&#013;&#013;But seriously, Niahm doesn't really have her own tray. Instead, she slots into any one of the four archetype (green, blue, brown, and gray) trays, thus using that tray's survival tracks (energy, health, and terror) and the basic deck of the same color.">
+                        <h4 class="modal__title" id="niahm-modal-title">
+                            Niahm Archetype Selection<sup>&quest;</sup>
+                        </h4>
+                
+                        <button id="niam-modal-x" type="button" class="modal__close"></button>
+                    </header>
+                    <div class="modal__content">
+                        <input type="radio" id="archetype-green" name="niahm-archetype" value="Green (Ailei)" required checked>
+                        <label for="archetype-green">Green (Ailei)</label><br>
+                        <input type="radio" id="archetype-blue" name="niahm-archetype" value="Blue (Beor)" required>
+                        <label for="archetype-blue">Blue (Beor)</label><br>
+                        <input type="radio" id="archetype-brown" name="niahm-archetype" value="Brown (Maggot)" required>
+                        <label for="archetype-brown">Brown (Maggot)</label><br>
+                        <input type="radio" id="archetype-gray" name="niahm-archetype" value="Gray (Arev)" required>
+                        <label for="archetype-gray">Gray (Arev)</label>
+                    </div>
+                    <footer class="modal__footer">
+                        <button type="submit" class="modal__btn modal__btn-primary">Select</button>
+                        <button id="niam-modal-close" type="button" class="modal__btn">Cancel</button>
+                    </footer>
+                </div>
+            </form>
+        </dialog>
+        <noscript>
+            <div id="noscript">
+                Javascript is not enabled. Please enable it and reload to use this page.
+            </div>
+        </noscript>
+        <nav class="side-nav">
+            <img id="side_nav_logo" src="./resources/images/tainted grail logo.svg" alt="Tainted Grail: The Fall of Avalalon Save Sheet" title="Tainted Grail: The Fall of Avalalon Save Sheet"/>
+            <div id="locations_side_nav_button" class="side-nav-button" title="Locations" onclick="openPage('locations', this)">
+                <img src="./resources/images/locations_white.png" class="side-nav-icon"/>
+                <img src="./resources/images/locations_black.png" class="side-nav-icon"/>
+                <p>L<span>OCATIONS</span></p>
+            </div>
+            <div id="notes_side_nav_button" class="side-nav-button" title="Notes" onclick="openPage('notes', this)">
+                <img src="./resources/images/notes_white.png" class="side-nav-icon"/>
+                <img src="./resources/images/notes_black.png" class="side-nav-icon"/>
+                <p>N<span>OTES</span></p>
+            </div>
+            <div id="characters_side_nav_button" class="side-nav-button" title="Characters" onclick="openPage('characters', this)">
+                <img src="./resources/images/characters_white.png" class="side-nav-icon"/>
+                <img src="./resources/images/characters_black.png" class="side-nav-icon"/>
+                <p>C<span>HARACTERS</span></p>
+            </div>
+            <div id="statuses_side_nav_button" class="side-nav-button" title="Statuses" onclick="openPage('statuses', this)">
+                <img src="./resources/images/statuses_white.png" class="side-nav-icon"/>
+                <img src="./resources/images/statuses_black.png" class="side-nav-icon"/>
+                <p>S<span>TATUSES</span></p>
+            </div>
+            <div id="load_save_side_nav_button" class="side-nav-button" title="Load/Save" onclick="openPage('load-save', this)">
+                <img src="./resources/images/load_save_white.png" class="side-nav-icon"/>
+                <img src="./resources/images/load_save_black.png" class="side-nav-icon"/>
+                <p>L<span>OAD</span>/S<span>AVE</span></p>
+            </div>
+        </nav>
+        <nav class="horizontal-nav">
+        </nav>
+        <div id="content-header"  class="content-side content-header"></div></div>
+
+        <div id="content-locations" class="content-side content-container">
+            <div id="locations-root">
+                <div id="locations">
+                    <div id="menhirs-quests-guardians">
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th class="th-left-align">Location</th>
+                                <th class="th-left-align">Dial Value</th>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Menhir #1</th>
+                                <td><input id="menhir-location-1" type="number" class="location-input"></input></td>
+                                <td><input id="menhir-dial-1" type="number" class="dial-input"></input></td>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Menhir #2</th>
+                                <td><input id="menhir-location-2" type="number" class="location-input"></input></td>
+                                <td><input id="menhir-dial-2" type="number" class="dial-input"></input></td>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Menhir #3</th>
+                                <td><input id="menhir-location-3" type="number" class="location-input"></input></td>
+                                <td><input id="menhir-dial-3" type="number" class="dial-input"></input></td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th class="th-left-align">Location</th>
+                                <th class="th-left-align">Dial Value</th>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Quest Dial #1</th>
+                                <td><input id="quest-location-1" type="number" class="location-input"></input></td>
+                                <td><input id="quest-dial-1" type="number" class="dial-input"></input></td>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Quest Dial #2</th>
+                                <td><input id="quest-location-2" type="number" class="location-input"></input></td>
+                                <td><input id="quest-dial-2" type="number" class="dial-input"></input></td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th class="th-left-align">Location</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Guardian #1</th>
+                                <td><input id="guardian-location-1" type="number" class="location-input"></input></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th class="th-left-align">Guardian #2</th>
+                                <td><input id="guardian-location-2" type="number" class="location-input"></input></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="removed-locations">
+                        <table>
+                            <tr>
+                                <th colspan="3">
+                                    Removed Locations:
+                                </th>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-1" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-1" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-2" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-2" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-3" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-3" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-4" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-4" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-5" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-5" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-6" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-6" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-7" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-7" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-8" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-8" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-9" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-9" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-10" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-10" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-11" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-11" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-12" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-12" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-13" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-13" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-14" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-14" type="number" class="removed-input"></input></td>
+                            </tr>
+                            <tr>
+                                <td><input id="old-location-15" type="number" class="removed-input"></input></td>
+                                <td>&#10132;</td>
+                                <td><input id="new-location-15" type="number" class="removed-input"></input></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content-notes" class="content-side content-container">
+            <div class="notes-input-container">
+                <textarea id="notes"></textarea>
+            </div>
+        </div>
+        <div id="content-characters" class="content-side content-container">
+            <div id="characters-root">
+                <div id="character1" class="character-container">
+                    <table class="character-name-location-dial">
+                        <tr>
+                            <th colspan="3" class="character-selector">
+                                Name:
+
+                                <select id="character1-name" onchange="characterSelected(this);">
+                                </select>
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Location:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character1-location" type="number" class="location-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3">
+                                &nbsp;
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Dial:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character1-dial" type="number" class="dial-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </table>
+                    <table class="character-stats" cellspacing="0">
+                        <tr>
+                            <td class="aggression-entry-td character-stat-td stat-gradient" title="Enter Aggression Value">
+                                <input type="number" class="attribute-input" id="character1-aggression" pattern="[0-9]{2}" min="0" max="99">
+                            </td>
+                            <td class="aggression-icon-td character-stat-td stat-gradient">
+                                <div class="aggression-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td rowspan="3" class="energy-entry-td character-stat-td stat-gradient">
+                                <div class="energy-entry-div" title="Enter Energy Level">
+                                    <input type="number" class="survival-input" id="character1-energy" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div energy-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="health-entry-td character-stat-td stat-gradient">
+                                <div class="health-entry-div" title="Enter Health Level">
+                                    <input type="number" class="survival-input" id="character1-health" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div health-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="terror-entry-td character-stat-td stat-gradient">
+                                <div class="terror-entry-div" title="Enter Terror Level">
+                                    <input type="number" class="survival-input" id="character1-terror" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div terror-icon-div"></div>
+                                </div>
+                            </td>
+                            <td class="empathy-icon-td character-stat-td stat-gradient">
+                                <div class="empathy-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="empathy-entry-td character-stat-td stat-gradient" title="Enter Empathy Value">
+                                <input type="number" class="attribute-input" id="character1-empathy" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="courage-entry-td character-stat-td stat-gradient" title="Enter Courage Value">
+                                <input type="number" class="attribute-input" id="character1-courage" min="0" max="99">
+                            </td>
+                            <td class="courage-icon-td character-stat-td  stat-gradient">
+                                <div class="courage-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+
+                            <td class="caution-icon-td character-stat-td stat-gradient">
+                                <div class="caution-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="caution-entry-td character-stat-td stat-gradient" title="Enter Caution Value">
+                                <input type="number" class="attribute-input" id="character1-caution" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="practicality-entry-td character-stat-td stat-gradient" title="Enter Practicality Value">
+                                <input type="number" class="attribute-input" id="character1-practicality" min="0" max="99">
+                            </td>
+                            <td class="practicality-icon-td character-stat-td stat-gradient">
+                                <div class="practicality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-icon-td character-stat-td stat-gradient">
+                                <div class="spirituality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-entry-td character-stat-td stat-gradient" title="Enter Spirituality Value">
+                                <input type="number" class="attribute-input" id="character1-spirituality" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blank-cell"></td>
+                            <td class="food-entry-td character-stat-td stat-gradient" title="Enter Food Quantity">
+                                <input type="number" class="resource-input" id="character1-food">
+                                <label>Food</label>
+                            </td>
+                            <td class="wealth-entry-td character-stat-td stat-gradient" title="Enter Wealth Quantity">
+                                <input type="number" class="resource-input" id="character1-wealth">
+                                <label>Wealth</label>
+                            </td>
+                            <td class="rep-entry-td character-stat-td stat-gradient" title="Enter Reputation Quantity">
+                                <input type="number" class="resource-input" id="character1-rep">
+                                <label>Rep</label>
+                            </td>
+                            <td class="exp-entry-td character-stat-td stat-gradient" title="Enter Experience Quantity">
+                                <input type="number" class="resource-input" id="character1-exp">
+                                <label>Exp</label>
+                            </td>
+                            <td class="magic-entry-td character-stat-td stat-gradient" title="Enter Magic Quantity">
+                                <input type="number" class="resource-input" id="character1-magic">
+                                <label>Magic</label>
+                            </td>
+                            <td class="blank-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="character2" class="character-container">
+                    <table class="character-name-location-dial">
+                        <tr>
+                            <th colspan="3" class="character-selector">
+                                Name:
+
+                                <select id="character2-name" onchange="characterSelected(this);">
+                                </select>
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Location:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character2-location" type="number" class="location-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3">
+                                &nbsp;
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Dial:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character2-dial" type="number" class="dial-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </table>
+                    <table class="character-stats" cellspacing="0">
+                        <tr>
+                            <td class="aggression-entry-td character-stat-td stat-gradient" title="Enter Aggression Value">
+                                <input type="number" class="attribute-input" id="character2-aggression" pattern="[0-9]{2}" min="0" max="99">
+                            </td>
+                            <td class="aggression-icon-td character-stat-td stat-gradient">
+                                <div class="aggression-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td rowspan="3" class="energy-entry-td character-stat-td stat-gradient">
+                                <div class="energy-entry-div" title="Enter Energy Level">
+                                    <input type="number" class="survival-input" id="character2-energy" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div energy-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="health-entry-td character-stat-td stat-gradient">
+                                <div class="health-entry-div" title="Enter Health Level">
+                                    <input type="number" class="survival-input" id="character2-health" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div health-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="terror-entry-td character-stat-td stat-gradient">
+                                <div class="terror-entry-div" title="Enter Terror Level">
+                                    <input type="number" class="survival-input" id="character2-terror" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div terror-icon-div"></div>
+                                </div>
+                            </td>
+                            <td class="empathy-icon-td character-stat-td stat-gradient">
+                                <div class="empathy-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="empathy-entry-td character-stat-td stat-gradient" title="Enter Empathy Value">
+                                <input type="number" class="attribute-input" id="character2-empathy" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="courage-entry-td character-stat-td stat-gradient" title="Enter Courage Value">
+                                <input type="number" class="attribute-input" id="character2-courage" min="0" max="99">
+                            </td>
+                            <td class="courage-icon-td character-stat-td  stat-gradient">
+                                <div class="courage-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+
+                            <td class="caution-icon-td character-stat-td stat-gradient">
+                                <div class="caution-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="caution-entry-td character-stat-td stat-gradient" title="Enter Caution Value">
+                                <input type="number" class="attribute-input" id="character2-caution" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="practicality-entry-td character-stat-td stat-gradient" title="Enter Practicality Value">
+                                <input type="number" class="attribute-input" id="character2-practicality" min="0" max="99">
+                            </td>
+                            <td class="practicality-icon-td character-stat-td stat-gradient">
+                                <div class="practicality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-icon-td character-stat-td stat-gradient">
+                                <div class="spirituality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-entry-td character-stat-td stat-gradient" title="Enter Spirituality Value">
+                                <input type="number" class="attribute-input" id="character2-spirituality" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blank-cell"></td>
+                            <td class="food-entry-td character-stat-td stat-gradient" title="Enter Food Quantity">
+                                <input type="number" class="resource-input" id="character2-food">
+                                <label>Food</label>
+                            </td>
+                            <td class="wealth-entry-td character-stat-td stat-gradient" title="Enter Wealth Quantity">
+                                <input type="number" class="resource-input" id="character2-wealth">
+                                <label>Wealth</label>
+                            </td>
+                            <td class="rep-entry-td character-stat-td stat-gradient" title="Enter Reputation Quantity">
+                                <input type="number" class="resource-input" id="character2-rep">
+                                <label>Rep</label>
+                            </td>
+                            <td class="exp-entry-td character-stat-td stat-gradient" title="Enter Experience Quantity">
+                                <input type="number" class="resource-input" id="character2-exp">
+                                <label>Exp</label>
+                            </td>
+                            <td class="magic-entry-td character-stat-td stat-gradient" title="Enter Magic Quantity">
+                                <input type="number" class="resource-input" id="character2-magic">
+                                <label>Magic</label>
+                            </td>
+                            <td class="blank-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="character3" class="character-container">
+                    <table class="character-name-location-dial">
+                        <tr>
+                            <th colspan="3" class="character-selector">
+                                Name:
+
+                                <select id="character3-name" onchange="characterSelected(this);">
+                                </select>
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Location:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character3-location" type="number" class="location-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3">
+                                &nbsp;
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Dial:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character3-dial" type="number" class="dial-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </table>
+                    <table class="character-stats" cellspacing="0">
+                        <tr>
+                            <td class="aggression-entry-td character-stat-td stat-gradient" title="Enter Aggression Value">
+                                <input type="number" class="attribute-input" id="character3-aggression" pattern="[0-9]{2}" min="0" max="99">
+                            </td>
+                            <td class="aggression-icon-td character-stat-td stat-gradient">
+                                <div class="aggression-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td rowspan="3" class="energy-entry-td character-stat-td stat-gradient">
+                                <div class="energy-entry-div" title="Enter Energy Level">
+                                    <input type="number" class="survival-input" id="character3-energy" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div energy-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="health-entry-td character-stat-td stat-gradient">
+                                <div class="health-entry-div" title="Enter Health Level">
+                                    <input type="number" class="survival-input" id="character3-health" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div health-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="terror-entry-td character-stat-td stat-gradient">
+                                <div class="terror-entry-div" title="Enter Terror Level">
+                                    <input type="number" class="survival-input" id="character3-terror" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div terror-icon-div"></div>
+                                </div>
+                            </td>
+                            <td class="empathy-icon-td character-stat-td stat-gradient">
+                                <div class="empathy-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="empathy-entry-td character-stat-td stat-gradient" title="Enter Empathy Value">
+                                <input type="number" class="attribute-input" id="character3-empathy" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="courage-entry-td character-stat-td stat-gradient" title="Enter Courage Value">
+                                <input type="number" class="attribute-input" id="character3-courage" min="0" max="99">
+                            </td>
+                            <td class="courage-icon-td character-stat-td  stat-gradient">
+                                <div class="courage-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+
+                            <td class="caution-icon-td character-stat-td stat-gradient">
+                                <div class="caution-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="caution-entry-td character-stat-td stat-gradient" title="Enter Caution Value">
+                                <input type="number" class="attribute-input" id="character3-caution" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="practicality-entry-td character-stat-td stat-gradient" title="Enter Practicality Value">
+                                <input type="number" class="attribute-input" id="character3-practicality" min="0" max="99">
+                            </td>
+                            <td class="practicality-icon-td character-stat-td stat-gradient">
+                                <div class="practicality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-icon-td character-stat-td stat-gradient">
+                                <div class="spirituality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-entry-td character-stat-td stat-gradient" title="Enter Spirituality Value">
+                                <input type="number" class="attribute-input" id="character3-spirituality" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blank-cell"></td>
+                            <td class="food-entry-td character-stat-td stat-gradient" title="Enter Food Quantity">
+                                <input type="number" class="resource-input" id="character3-food">
+                                <label>Food</label>
+                            </td>
+                            <td class="wealth-entry-td character-stat-td stat-gradient" title="Enter Wealth Quantity">
+                                <input type="number" class="resource-input" id="character3-wealth">
+                                <label>Wealth</label>
+                            </td>
+                            <td class="rep-entry-td character-stat-td stat-gradient" title="Enter Reputation Quantity">
+                                <input type="number" class="resource-input" id="character3-rep">
+                                <label>Rep</label>
+                            </td>
+                            <td class="exp-entry-td character-stat-td stat-gradient" title="Enter Experience Quantity">
+                                <input type="number" class="resource-input" id="character3-exp">
+                                <label>Exp</label>
+                            </td>
+                            <td class="magic-entry-td character-stat-td stat-gradient" title="Enter Magic Quantity">
+                                <input type="number" class="resource-input" id="character3-magic">
+                                <label>Magic</label>
+                            </td>
+                            <td class="blank-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="character4" class="character-container">
+                    <table class="character-name-location-dial">
+                        <tr>
+                            <th colspan="3" class="character-selector">
+                                Name:
+
+                                <select id="character4-name" onchange="characterSelected(this);">
+                                </select>
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Location:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character4-location" type="number" class="location-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3">
+                                &nbsp;
+                            </th>
+                            <th colspan="2" class="character-location-dial-th">
+                                Dial:
+                            </th>
+                            <td colspan="2" class="character-location-dial-td">
+                                <input id="character4-dial" type="number" class="dial-input"></input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                    </table>
+                    <table class="character-stats" cellspacing="0">
+                        <tr>
+                            <td class="aggression-entry-td character-stat-td stat-gradient" title="Enter Aggression Value">
+                                <input type="number" class="attribute-input" id="character4-aggression" pattern="[0-9]{2}" min="0" max="99">
+                            </td>
+                            <td class="aggression-icon-td character-stat-td stat-gradient">
+                                <div class="aggression-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td rowspan="3" class="energy-entry-td character-stat-td stat-gradient">
+                                <div class="energy-entry-div" title="Enter Energy Level">
+                                    <input type="number" class="survival-input" id="character4-energy" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div energy-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="health-entry-td character-stat-td stat-gradient">
+                                <div class="health-entry-div" title="Enter Health Level">
+                                    <input type="number" class="survival-input" id="character4-health" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div health-icon-div"></div>
+                                </div>
+                            </td>
+                            <td rowspan="3" class="terror-entry-td character-stat-td stat-gradient">
+                                <div class="terror-entry-div" title="Enter Terror Level">
+                                    <input type="number" class="survival-input" id="character4-terror" min="0" max="99">
+                                </div>
+                                <div class="icon-div-container">
+                                    <div class="survival-icon-div terror-icon-div"></div>
+                                </div>
+                            </td>
+                            <td class="empathy-icon-td character-stat-td stat-gradient">
+                                <div class="empathy-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="empathy-entry-td character-stat-td stat-gradient" title="Enter Empathy Value">
+                                <input type="number" class="attribute-input" id="character4-empathy" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="courage-entry-td character-stat-td stat-gradient" title="Enter Courage Value">
+                                <input type="number" class="attribute-input" id="character4-courage" min="0" max="99">
+                            </td>
+                            <td class="courage-icon-td character-stat-td  stat-gradient">
+                                <div class="courage-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+
+                            <td class="caution-icon-td character-stat-td stat-gradient">
+                                <div class="caution-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="caution-entry-td character-stat-td stat-gradient" title="Enter Caution Value">
+                                <input type="number" class="attribute-input" id="character4-caution" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="practicality-entry-td character-stat-td stat-gradient" title="Enter Practicality Value">
+                                <input type="number" class="attribute-input" id="character4-practicality" min="0" max="99">
+                            </td>
+                            <td class="practicality-icon-td character-stat-td stat-gradient">
+                                <div class="practicality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-icon-td character-stat-td stat-gradient">
+                                <div class="spirituality-icon-div attribute-icon-div">
+                                </div>
+                            </td>
+                            <td class="spirituality-entry-td character-stat-td stat-gradient" title="Enter Spirituality Value">
+                                <input type="number" class="attribute-input" id="character4-spirituality" min="0" max="99">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blank-cell"></td>
+                            <td class="food-entry-td character-stat-td stat-gradient" title="Enter Food Quantity">
+                                <input type="number" class="resource-input" id="character4-food">
+                                <label>Food</label>
+                            </td>
+                            <td class="wealth-entry-td character-stat-td stat-gradient" title="Enter Wealth Quantity">
+                                <input type="number" class="resource-input" id="character4-wealth">
+                                <label>Wealth</label>
+                            </td>
+                            <td class="rep-entry-td character-stat-td stat-gradient" title="Enter Reputation Quantity">
+                                <input type="number" class="resource-input" id="character4-rep">
+                                <label>Rep</label>
+                            </td>
+                            <td class="exp-entry-td character-stat-td stat-gradient" title="Enter Experience Quantity">
+                                <input type="number" class="resource-input" id="character4-exp">
+                                <label>Exp</label>
+                            </td>
+                            <td class="magic-entry-td character-stat-td stat-gradient" title="Enter Magic Quantity">
+                                <input type="number" class="resource-input" id="character4-magic">
+                                <label>Magic</label>
+                            </td>
+                            <td class="blank-cell"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="content-statuses" class="content-side content-container">
+            <div id="statuses">
+
+            </div>
+        </div>
+        <div id="content-load-save" class="content-side content-container">
+            <div id="load-save">
+                <div id="load">
+                    <h2>
+                        Load Sheet
+                    </h2>
+                    <select id="saved-sheets-list" size="5">
+
+                    </select>
+
+                    <button id="load-selected-save" type="button">Load Selected Save</button>
+                    <button id="delete-selected-save" type="button">Delete Selected Save</button>
+                    <br><br>
+                    <label for="load-from-file">Load from File:</label>
+                    <input id="load-from-file" type="file"></input>
+                </div>
+                <div id="save">
+                    <h2>
+                        Save Sheet
+                    </h2>
+                    <label for="local-save-name">
+                        Save in browser:
+                    </label>
+                    <input id="local-save-name" type="text">
+                    </input>
+                    <button id="local-save-name-button" type="button">Save</button>
+                    <br><br>
+                    <button id="save-to-file-button" type="button">Save to File</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

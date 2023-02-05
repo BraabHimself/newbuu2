@@ -1,0 +1,99 @@
+/*
+Light Pink: RGB(237, 192, 189)
+Dark Pink: RGB(212, 115, 111)
+Black: 12, 16, 17
+Light Purple: 174, 137, 208
+Dark Purple: 124, 71, 155
+Yellow: 212, 205, 51
+white: 245, 245, 245
+*/
+
+html { height: 100%; }
+
+body {
+    height: 100%;
+    background-color: rgba(212, 115, 111);
+    margin: 0px;
+    font-family: fantasy;
+}
+
+#container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#top-bar {
+    overflow: hidden;
+    background-color: rgb(12, 16, 17);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    padding: 10px;
+}
+
+#content {
+    width: 100%;
+}
+
+#link-carousel {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 550px;
+    max-height: 550px;
+    border: solid 1px rgb(212, 205, 51);
+}
+
+.item {
+    max-width: 550px;
+    max-height: 550px;
+}
+
+.caption-bg {
+    color: rgb(245, 245, 245);
+    background-color: rgba(12, 16, 17, .5);
+}
+
+#bottom-bar {
+    overflow: hidden;
+    background-color: rgb(124, 71, 155);
+    border-top-color: rgb(174, 137, 208);
+    border-top-width: 1px;
+    border-top-style: solid;
+    padding: 10px;
+}
+
+#bar-title {
+    margin-left: 10px;
+    color: rgb(245, 245, 245);
+    cursor: default;
+    width: fit-content;
+}
+
+#bar-title:hover {
+    color: rgb(237, 192, 189);
+}
+
+#social-container {
+    text-align: center;
+}
+
+#github {
+    margin-right: 10px;
+}
+
+#twitter {
+    margin-right: 10px;
+}
+
+.social-item {
+    text-decoration: none;
+}
+
+.social-icon {
+    width: 30px;
+    filter: invert(99%) sepia(7%) saturate(623%) hue-rotate(240deg) brightness(117%) contrast(92%);
+}
+
+.social-icon:hover {
+    filter: invert(65%) sepia(42%) saturate(398%) hue-rotate(227deg) brightness(85%) contrast(90%);
+}

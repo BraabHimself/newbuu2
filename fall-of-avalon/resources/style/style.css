@@ -1,0 +1,833 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url('../images/paper_bg.png');
+    margin: 0px;
+    height: inherit;
+    font-family: CelticGaramondTheSecond;
+}
+
+select, input {
+    font-family: MinionProRegular;
+}
+
+#noscript {
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.side-nav {
+    height: 100%;
+    position: fixed;
+    width: 150px;
+    background-color: rgb(0, 0, 0, .35);
+    z-index: 1;
+    text-align: center;
+    border-right-color: black;
+    border-right-style: solid;
+    border-right-width: 1px;
+    font-size: 14pt;
+    color: rgb(255, 255, 255);
+    min-height: 370px;
+}
+
+.horizontal-nav {
+    display: none;
+}
+
+.content-side {
+    margin-left: 150px;
+}
+
+.content-header {
+    text-align: left;
+    font-size: 22pt;
+    padding-left: 50px;
+}
+
+.content-header span {
+    font-size: 15pt;
+}
+
+.content-container {
+    display: none;
+    text-align: left;
+    width: calc(100% - 150px);
+}
+
+.notes-input-container {
+    width: calc(90% - 50px);
+    height: 100%;
+    margin-left: 50px;
+    min-width: 460px;
+}
+
+#notes {
+    width: 100%;
+    height: 100%;
+    resize: vertical;
+    font-family: MinionProRegular;
+}
+
+#statuses {
+    width: calc(90% - 50px);
+    margin-left: 50px;
+    height: 100%;
+    font-family: MinionProRegular;
+    column-count:1;
+    display: inline-block;
+}
+
+#content-load-save {
+    font-family: MinionProRegular;
+}
+
+#load-save {
+    width: 90%;
+    margin-left: 50px;
+}
+
+#load {
+    width: 400px;
+}
+
+#saved-sheets-list {
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+#save {
+    width: 400px;
+}
+
+#local-save-name, #load-from-file {
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    #statuses {
+        column-count:2;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    #statuses {
+        column-count:3;
+    }
+}
+
+.side-nav-button {
+    width: 100%;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.side-nav-button p {
+    margin: 0px;
+}
+
+.side-nav-button p span {
+    font-size: 9pt;
+}
+
+.side-nav-button img:nth-child(2) {
+    display: none;
+}
+
+.side-nav-button:hover {
+    color: black;
+}
+
+.side-nav-button:hover img:nth-child(1) {
+    display: none;
+}
+
+.side-nav-button:hover img:nth-child(2) {
+    display: inline-block;
+}
+
+.side-nav-icon {
+    width: 36px;
+}
+
+#side_nav_logo {
+    width: 130px;
+    margin-top: 10px;
+}
+
+.status-comment {
+    font-size: 10pt;
+}
+
+.status-item {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+}
+
+#content-notes {
+    height: 80%;
+}
+
+#content-locations {
+    font-family: MinionProRegular;
+    min-width: 460px;
+}
+
+#content-statuses {
+    min-width: 385px;
+}
+
+#locations-root {
+    width: 90%;
+    margin-left: 50px;
+}
+
+#locations {
+    width: 100%;
+    display: grid;
+    column-count: 1;
+    column-gap: 50px;
+}
+
+#menhirs-quests-guardians {
+    width: 100%;
+}
+
+#removed-locations {
+    width: 100%;
+}
+
+#removed-locations {
+    margin-top: 25px;
+}
+
+@media screen and (min-width: 801px) {
+    #locations {
+        column-count: 2;
+        grid-template-columns: repeat(2, 350px);
+    }
+
+    #removed-locations {
+        margin-top: 0px;
+    }
+
+    #menhirs-quests-guardians {
+        width: 350px;
+    }
+    
+    #removed-locations {
+        width: 215px;
+    }
+}
+
+.location-input {
+    width: 75px;
+}
+
+.dial-input {
+    width: 75px;
+}
+
+.removed-input {
+    width: 50px
+}
+
+.th-left-align {
+    text-align: left;
+}
+
+#characters-root {
+    width: 90%;
+    font-size: 9pt;
+    column-count: 1;
+    column-gap: 50px;
+    margin-left: 50px;
+    display: grid;
+}
+
+.character-name-location-dial th, .character-name-location-dial td {
+    width: 50px;
+}
+
+.character-stat-td {
+    border: 1px solid black;
+    padding: 0px;
+    text-align: center;
+}
+
+.stat-gradient {
+    background: linear-gradient(to bottom, #ffffff -15%, #dcdcdc 100%);
+}
+
+.blank-cell {
+    width: 50px;
+    height: 50px;
+}
+
+.aggression-entry-td {
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+}
+
+.aggression-icon-td {
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+}
+
+.attribute-icon-div{
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    opacity: 75%;
+}
+
+.aggression-icon-div {
+    background-image: url(../images/aggression.svg);
+}
+
+.empathy-entry-td {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+.empathy-icon-td {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+.empathy-icon-div {
+    background-image: url(../images/empathy.svg);
+}
+
+.courage-entry-td {
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.courage-icon-td {
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.courage-icon-div {
+    background-image: url(../images/courage.svg);
+}
+
+.caution-entry-td {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.caution-icon-td {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.caution-icon-div {
+    background-image: url(../images/caution.svg);
+}
+
+.practicality-entry-td {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.practicality-icon-td {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.practicality-icon-div {
+    background-image: url(../images/practicality.svg);
+}
+
+.spirituality-entry-td {
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.spirituality-icon-td {
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.spirituality-icon-div {
+    background-image: url(../images/spirituality.svg);
+}
+
+.energy-entry-td {
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.health-entry-td {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.terror-entry-td {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.food-entry-td {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.wealth-entry-td {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.rep-entry-td {
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.exp-entry-td {
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.magic-entry-td {
+    border-top-width: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+}
+
+.attribute-input {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+    padding: 0px;
+    text-align: center;
+    background: transparent;
+}
+
+.survival-input {
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    padding: 0px;
+    text-align: center;
+    background: transparent;
+}
+
+.icon-div-container {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+.survival-icon-div {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.energy-icon-div {
+    width: 30px;
+    height: 30px;
+    background: url(../images/energy_health_terror.png) no-repeat 0px 0px;
+}
+
+.health-icon-div {
+    width: 30px;
+    height: 30px;
+    background: url(../images/energy_health_terror.png) no-repeat 0px -30px;
+}
+
+.terror-icon-div {
+    width: 30px;
+    height: 30px;
+    background: url(../images/energy_health_terror.png) no-repeat 0px -60px;
+}
+
+.resource-entry {
+    width: 100%;
+    height: 50%;
+}
+
+.resource-name {
+    width: 100%;
+    height: 50%;
+}
+
+.resource-input {
+    width: 100%;
+    height: 50%;
+    border: 0px;
+    padding: 0px;
+    text-align: center;
+    background: transparent;
+}
+
+.character-container {
+    width: 400px;
+    margin-top: 10px;
+}
+
+#character1 {
+    margin-top: 0px;
+}
+
+@media screen and (min-width: 1079px) {
+    #characters-root {
+        column-count: 2;
+        grid-template-columns: repeat(2, 400px);
+    }
+
+    #character2 {
+        margin-top: 0px;
+    }
+}
+
+.character-stats th, .character-stats td {
+    width: 50px;
+    height: 50px;
+}
+
+.character-selector {
+    text-align: left;
+}
+
+.character-location-dial-th {
+    text-align: right;
+}
+
+.character-location-dial-td {
+    text-align: left;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+/*Label Stuff*/
+.status-item  input{
+    display: none;
+  }
+  
+.check-label {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    border: 1px solid black;
+    line-height: 15px;
+    cursor: pointer;
+    font-size: 10pt;
+}
+
+.label-margin {
+    margin-right: 1px;
+}
+
+.status-table {
+    width: 100%;
+}
+
+.status-name {
+    text-align: left;
+}
+
+.status-checks {
+    text-align: right;
+}
+
+#AlliesofAvalon1:checked ~ label[for="AlliesofAvalon1"],
+#AlliesofAvalon2:checked ~ label[for="AlliesofAvalon2"],
+#AlliesofAvalon3:checked ~ label[for="AlliesofAvalon3"],
+#AlliesofAvalon4:checked ~ label[for="AlliesofAvalon4"],
+#AlliesofAvalon5:checked ~ label[for="AlliesofAvalon5"],
+#BlackCauldron1:checked ~ label[for="BlackCauldron1"],
+#BlackCauldron2:checked ~ label[for="BlackCauldron2"],
+#BlackCauldron3:checked ~ label[for="BlackCauldron3"],
+#BurningMystery1:checked ~ label[for="BurningMystery1"],
+#BurningMystery2:checked ~ label[for="BurningMystery2"],
+#BurningMystery3:checked ~ label[for="BurningMystery3"],
+#BurningMystery4:checked ~ label[for="BurningMystery4"],
+#BurningMystery5:checked ~ label[for="BurningMystery5"],
+#BurningMystery6:checked ~ label[for="BurningMystery6"],
+#BurningMystery7:checked ~ label[for="BurningMystery7"],
+#BurningMystery8:checked ~ label[for="BurningMystery8"],
+#CallfromBeyond1:checked ~ label[for="CallfromBeyond1"],
+#CharredKnowledge1:checked ~ label[for="CharredKnowledge1"],
+#CherishedBelongings1:checked ~ label[for="CherishedBelongings1"],
+#ColdPyre1:checked ~ label[for="ColdPyre1"],
+#Cosuil1:checked ~ label[for="Cosuil1"],
+#Cosuil2:checked ~ label[for="Cosuil2"],
+#Cosuil3:checked ~ label[for="Cosuil3"],
+#Cosuil4:checked ~ label[for="Cosuil4"],
+#Cosuil5:checked ~ label[for="Cosuil5"],
+#DealBreaker1:checked ~ label[for="DealBreaker1"],
+#DeepSecret1:checked ~ label[for="DeepSecret1"],
+#Diplomat1:checked ~ label[for="Diplomat1"],
+#Diplomat2:checked ~ label[for="Diplomat2"],
+#Diplomat3:checked ~ label[for="Diplomat3"],
+#DiplomaticMission1:checked ~ label[for="DiplomaticMission1"],
+#DiplomaticMission2:checked ~ label[for="DiplomaticMission2"],
+#DiplomaticMission3:checked ~ label[for="DiplomaticMission3"],
+#DiplomaticMission4:checked ~ label[for="DiplomaticMission4"],
+#DiplomaticMission5:checked ~ label[for="DiplomaticMission5"],
+#DiplomaticMission6:checked ~ label[for="DiplomaticMission6"],
+#DisturbingInformation1:checked ~ label[for="DisturbingInformation1"],
+#DisturbingInformation2:checked ~ label[for="DisturbingInformation2"],
+#DisturbingInformation3:checked ~ label[for="DisturbingInformation3"],
+#DreamsandProphecies1:checked ~ label[for="DreamsandProphecies1"],
+#DreamsandProphecies2:checked ~ label[for="DreamsandProphecies2"],
+#DreamsandProphecies3:checked ~ label[for="DreamsandProphecies3"],
+#DreamsandProphecies4:checked ~ label[for="DreamsandProphecies4"],
+#DreamsandProphecies5:checked ~ label[for="DreamsandProphecies5"],
+#DreamsandProphecies6:checked ~ label[for="DreamsandProphecies6"],
+#DreamsandProphecies7:checked ~ label[for="DreamsandProphecies7"],
+#DreamsandProphecies8:checked ~ label[for="DreamsandProphecies8"],
+#EndoftheRoad1:checked ~ label[for="EndoftheRoad1"],
+#EnemiesofAvalon1:checked ~ label[for="EnemiesofAvalon1"],
+#EnemiesofAvalon2:checked ~ label[for="EnemiesofAvalon2"],
+#EnemiesofAvalon3:checked ~ label[for="EnemiesofAvalon3"],
+#Escalation1:checked ~ label[for="Escalation1"],
+#Escalation2:checked ~ label[for="Escalation2"],
+#Escalation3:checked ~ label[for="Escalation3"],
+#FaelsLegacy1:checked ~ label[for="FaelsLegacy1"],
+#FallofChivalry1:checked ~ label[for="FallofChivalry1"],
+#FallofChivalry2:checked ~ label[for="FallofChivalry2"],
+#FallofChivalry3:checked ~ label[for="FallofChivalry3"],
+#FallofChivalry4:checked ~ label[for="FallofChivalry4"],
+#FallofChivalry5:checked ~ label[for="FallofChivalry5"],
+#FallofChivalry6:checked ~ label[for="FallofChivalry6"],
+#FallofChivalry7:checked ~ label[for="FallofChivalry7"],
+#FallofChivalry8:checked ~ label[for="FallofChivalry8"],
+#FarpointClues1:checked ~ label[for="FarpointClues1"],
+#FarpointClues2:checked ~ label[for="FarpointClues2"],
+#FarpointClues3:checked ~ label[for="FarpointClues3"],
+#FarpointClues4:checked ~ label[for="FarpointClues4"],
+#FarpointClues5:checked ~ label[for="FarpointClues5"],
+#FateoftheExpedition1:checked ~ label[for="FateoftheExpedition1"],
+#FateoftheExpedition2:checked ~ label[for="FateoftheExpedition2"],
+#FateoftheExpedition3:checked ~ label[for="FateoftheExpedition3"],
+#FateoftheExpedition4:checked ~ label[for="FateoftheExpedition4"],
+#FateoftheExpedition5:checked ~ label[for="FateoftheExpedition5"],
+#FateoftheExpedition6:checked ~ label[for="FateoftheExpedition6"],
+#FateoftheExpedition7:checked ~ label[for="FateoftheExpedition7"],
+#FateoftheExpedition8:checked ~ label[for="FateoftheExpedition8"],
+#FateoftheExpedition9:checked ~ label[for="FateoftheExpedition9"],
+#FinalConfrontations1:checked ~ label[for="FinalConfrontations1"],
+#FinalConfrontations2:checked ~ label[for="FinalConfrontations2"],
+#FinalConfrontations3:checked ~ label[for="FinalConfrontations3"],
+#FinalConfrontations4:checked ~ label[for="FinalConfrontations4"],
+#FinalConfrontations5:checked ~ label[for="FinalConfrontations5"],
+#FinalConfrontations6:checked ~ label[for="FinalConfrontations6"],
+#FinalConfrontations7:checked ~ label[for="FinalConfrontations7"],
+#FinalLesson1:checked ~ label[for="FinalLesson1"],
+#FinalLesson2:checked ~ label[for="FinalLesson2"],
+#FinalLesson3:checked ~ label[for="FinalLesson3"],
+#FinalLesson4:checked ~ label[for="FinalLesson4"],
+#FinalLesson5:checked ~ label[for="FinalLesson5"],
+#FortunateMeetings1:checked ~ label[for="FortunateMeetings1"],
+#FortunateMeetings2:checked ~ label[for="FortunateMeetings2"],
+#FortunateMeetings3:checked ~ label[for="FortunateMeetings3"],
+#FortunateMeetings4:checked ~ label[for="FortunateMeetings4"],
+#FortunateMeetings5:checked ~ label[for="FortunateMeetings5"],
+#GeneralDirections1:checked ~ label[for="GeneralDirections1"],
+#GerraintsSuccessor1:checked ~ label[for="GerraintsSuccessor1"],
+#GerraintsSuccessor2:checked ~ label[for="GerraintsSuccessor2"],
+#GerraintsSuccessor3:checked ~ label[for="GerraintsSuccessor3"],
+#GlenRitual1:checked ~ label[for="GlenRitual1"],
+#GlenRitual2:checked ~ label[for="GlenRitual2"],
+#GuestofHonor1:checked ~ label[for="GuestofHonor1"],
+#HalfwayIntrigue1:checked ~ label[for="HalfwayIntrigue1"],
+#HalfwayIntrigue2:checked ~ label[for="HalfwayIntrigue2"],
+#HalfwayIntrigue3:checked ~ label[for="HalfwayIntrigue3"],
+#HelpingHand1:checked ~ label[for="HelpingHand1"],
+#HelpingHand2:checked ~ label[for="HelpingHand2"],
+#HelpingHand3:checked ~ label[for="HelpingHand3"],
+#HelpingHand4:checked ~ label[for="HelpingHand4"],
+#HelpingHand5:checked ~ label[for="HelpingHand5"],
+#HelpingHand6:checked ~ label[for="HelpingHand6"],
+#HelpingtheKnights1:checked ~ label[for="HelpingtheKnights1"],
+#HelpingtheKnights2:checked ~ label[for="HelpingtheKnights2"],
+#HelpingtheKnights3:checked ~ label[for="HelpingtheKnights3"],
+#HelpingtheKnights4:checked ~ label[for="HelpingtheKnights4"],
+#HiddenTreasures1:checked ~ label[for="HiddenTreasures1"],
+#HiddenTreasures2:checked ~ label[for="HiddenTreasures2"],
+#HiddenTreasures3:checked ~ label[for="HiddenTreasures3"],
+#HiddenTreasures4:checked ~ label[for="HiddenTreasures4"],
+#HiddenTreasures5:checked ~ label[for="HiddenTreasures5"],
+#HiddenTreasures6:checked ~ label[for="HiddenTreasures6"],
+#HiddenTreasures7:checked ~ label[for="HiddenTreasures7"],
+#HiddenTreasures8:checked ~ label[for="HiddenTreasures8"],
+#HuntersMark1:checked ~ label[for="HuntersMark1"],
+#LadysTask1:checked ~ label[for="LadysTask1"],
+#LastHaven1:checked ~ label[for="LastHaven1"],
+#LastHaven2:checked ~ label[for="LastHaven2"],
+#LastHaven3:checked ~ label[for="LastHaven3"],
+#LastHaven4:checked ~ label[for="LastHaven4"],
+#LastHaven5:checked ~ label[for="LastHaven5"],
+#LeftBehind1:checked ~ label[for="LeftBehind1"],
+#LeftBehind2:checked ~ label[for="LeftBehind2"],
+#LeftBehind3:checked ~ label[for="LeftBehind3"],
+#LeftBehind4:checked ~ label[for="LeftBehind4"],
+#LeftBehind5:checked ~ label[for="LeftBehind5"],
+#LeftBehind6:checked ~ label[for="LeftBehind6"],
+#LeftBehind7:checked ~ label[for="LeftBehind7"],
+#LeftBehind8:checked ~ label[for="LeftBehind8"],
+#LeftBehind9:checked ~ label[for="LeftBehind9"],
+#LostandFallen1:checked ~ label[for="LostandFallen1"],
+#LostandFallen2:checked ~ label[for="LostandFallen2"],
+#LostandFallen3:checked ~ label[for="LostandFallen3"],
+#LostandFallen4:checked ~ label[for="LostandFallen4"],
+#LostandFallen5:checked ~ label[for="LostandFallen5"],
+#LostandFallen6:checked ~ label[for="LostandFallen6"],
+#LostandFallen7:checked ~ label[for="LostandFallen7"],
+#MaggotsRedemption1:checked ~ label[for="MaggotsRedemption1"],
+#Matricide1:checked ~ label[for="Matricide1"],
+#MonasteryDiscovered1:checked ~ label[for="MonasteryDiscovered1"],
+#MoonringMission1:checked ~ label[for="MoonringMission1"],
+#MorgainesTask1:checked ~ label[for="MorgainesTask1"],
+#MourningSong1:checked ~ label[for="MourningSong1"],
+#MourningSong2:checked ~ label[for="MourningSong2"],
+#MysterySolved1:checked ~ label[for="MysterySolved1"],
+#Pathfinder1:checked ~ label[for="Pathfinder1"],
+#Pathfinder2:checked ~ label[for="Pathfinder2"],
+#Pathfinder3:checked ~ label[for="Pathfinder3"],
+#Pathfinder4:checked ~ label[for="Pathfinder4"],
+#Pathfinder5:checked ~ label[for="Pathfinder5"],
+#Pathfinder6:checked ~ label[for="Pathfinder6"],
+#Pathfinder7:checked ~ label[for="Pathfinder7"],
+#Pathfinder8:checked ~ label[for="Pathfinder8"],
+#PeaceinBorough1:checked ~ label[for="PeaceinBorough1"],
+#PeoplesChampion1:checked ~ label[for="PeoplesChampion1"],
+#Pillager1:checked ~ label[for="Pillager1"],
+#Pillager2:checked ~ label[for="Pillager2"],
+#Pillager3:checked ~ label[for="Pillager3"],
+#Pillager4:checked ~ label[for="Pillager4"],
+#Pillager5:checked ~ label[for="Pillager5"],
+#Reclamation1:checked ~ label[for="Reclamation1"],
+#Remedy1:checked ~ label[for="Remedy1"],
+#Remedy2:checked ~ label[for="Remedy2"],
+#Remedy3:checked ~ label[for="Remedy3"],
+#Remedy4:checked ~ label[for="Remedy4"],
+#Remnants1:checked ~ label[for="Remnants1"],
+#Remnants2:checked ~ label[for="Remnants2"],
+#Remnants3:checked ~ label[for="Remnants3"],
+#Remnants4:checked ~ label[for="Remnants4"],
+#Remnants5:checked ~ label[for="Remnants5"],
+#RestoringtheOrder1:checked ~ label[for="RestoringtheOrder1"],
+#RestoringtheOrder2:checked ~ label[for="RestoringtheOrder2"],
+#RestoringtheOrder3:checked ~ label[for="RestoringtheOrder3"],
+#RestoringtheOrder4:checked ~ label[for="RestoringtheOrder4"],
+#RestoringtheOrder5:checked ~ label[for="RestoringtheOrder5"],
+#RestoringtheOrder6:checked ~ label[for="RestoringtheOrder6"],
+#RestoringtheOrder7:checked ~ label[for="RestoringtheOrder7"],
+#RestoringtheOrder8:checked ~ label[for="RestoringtheOrder8"],
+#RiddleoftheOldsteel1:checked ~ label[for="RiddleoftheOldsteel1"],
+#SavedbytheGoddess1:checked ~ label[for="SavedbytheGoddess1"],
+#Scrounger1:checked ~ label[for="Scrounger1"],
+#SecretsoftheForest1:checked ~ label[for="SecretsoftheForest1"],
+#SecretsoftheForest2:checked ~ label[for="SecretsoftheForest2"],
+#SecretsoftheForest3:checked ~ label[for="SecretsoftheForest3"],
+#SecretsoftheForest4:checked ~ label[for="SecretsoftheForest4"],
+#ShelterintheStorm1:checked ~ label[for="ShelterintheStorm1"],
+#ShrineSecure1:checked ~ label[for="ShrineSecure1"],
+#SomethingisWatching1:checked ~ label[for="SomethingisWatching1"],
+#SomethingisWatching2:checked ~ label[for="SomethingisWatching2"],
+#SomethingisWatching3:checked ~ label[for="SomethingisWatching3"],
+#SomethingisWatching4:checked ~ label[for="SomethingisWatching4"],
+#StonemasonsSecret1:checked ~ label[for="StonemasonsSecret1"],
+#StrangeEncounters1:checked ~ label[for="StrangeEncounters1"],
+#StrangeEncounters2:checked ~ label[for="StrangeEncounters2"],
+#StrangeEncounters3:checked ~ label[for="StrangeEncounters3"],
+#StrangeEncounters4:checked ~ label[for="StrangeEncounters4"],
+#StrangeEncounters5:checked ~ label[for="StrangeEncounters5"],
+#StrangeEncounters6:checked ~ label[for="StrangeEncounters6"],
+#StrangeEncounters7:checked ~ label[for="StrangeEncounters7"],
+#StrangeEncounters8:checked ~ label[for="StrangeEncounters8"],
+#SupplyingtheRevolt1:checked ~ label[for="SupplyingtheRevolt1"],
+#SupplyingtheRevolt2:checked ~ label[for="SupplyingtheRevolt2"],
+#SupplyingtheRevolt3:checked ~ label[for="SupplyingtheRevolt3"],
+#SupplyingtheRevolt4:checked ~ label[for="SupplyingtheRevolt4"],
+#TanglerootKnowledge1:checked ~ label[for="TanglerootKnowledge1"],
+#TanglerootKnowledge2:checked ~ label[for="TanglerootKnowledge2"],
+#Tracker1:checked ~ label[for="Tracker1"],
+#TravelingMenhir1:checked ~ label[for="TravelingMenhir1"],
+#TravelingMenhir2:checked ~ label[for="TravelingMenhir2"],
+#TuathanExploration1:checked ~ label[for="TuathanExploration1"],
+#TuathanExploration2:checked ~ label[for="TuathanExploration2"],
+#TuathanExploration3:checked ~ label[for="TuathanExploration3"],
+#TuathanExploration4:checked ~ label[for="TuathanExploration4"],
+#TuathanExploration5:checked ~ label[for="TuathanExploration5"],
+#Underfern1:checked ~ label[for="Underfern1"],
+#Underfern2:checked ~ label[for="Underfern2"],
+#Underfern3:checked ~ label[for="Underfern3"],
+#Underfern4:checked ~ label[for="Underfern4"],
+#Underfern5:checked ~ label[for="Underfern5"],
+#WarforAvalon1:checked ~ label[for="WarforAvalon1"],
+#WarforAvalon2:checked ~ label[for="WarforAvalon2"],
+#WarforAvalon3:checked ~ label[for="WarforAvalon3"],
+#WarforAvalon4:checked ~ label[for="WarforAvalon4"],
+#WindsofWyrdness1:checked ~ label[for="WindsofWyrdness1"] {
+    background: rgb(139, 0, 0);
+    color: #ffffff;
+  }
+
+/* Fonts */
+@font-face {
+    font-family: CelticGaramondTheSecond;
+    src: url(../fonts/CELTG___.TTF);
+}
+
+@font-face {
+    font-family: MinionProRegular;
+    src: url(../fonts/Minion\ Pro\ Bold.ttf);
+}
